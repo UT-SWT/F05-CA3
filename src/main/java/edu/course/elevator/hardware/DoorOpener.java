@@ -1,2 +1,7 @@
 package edu.course.elevator.hardware;
-public interface DoorOpener { void open(); void close(); }
+
+public interface DoorOpener {
+    void open();
+
+    void close();
+}

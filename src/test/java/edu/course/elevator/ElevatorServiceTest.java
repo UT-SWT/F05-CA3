@@ -1,13 +1,18 @@
 package edu.course.elevator;
 
 import edu.course.elevator.events.ElevatorEventPublisher;
-import edu.course.elevator.hardware.*;
-import edu.course.elevator.model.*;
+import edu.course.elevator.hardware.InMemoryFloorSensor;
+import edu.course.elevator.hardware.RecordingMotor;
+import edu.course.elevator.hardware.SimpleDoor;
+import edu.course.elevator.model.Elevator;
+import edu.course.elevator.model.ElevatorState;
 import edu.course.elevator.service.ElevatorService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class ElevatorServiceTest {
@@ -21,7 +26,6 @@ class ElevatorServiceTest {
 
     @BeforeEach
     void setUp() {
-        // General fixture: every test receives all these objects, even when it needs only one.
         elevator = new Elevator(1, 0, 10);
         motor = new RecordingMotor();
         door = new SimpleDoor();
@@ -34,7 +38,6 @@ class ElevatorServiceTest {
 
     @Test
     void testMoveOpenCloseAndNotifyEverything() {
-        // Eager test: several behaviors are verified in one test.
         service.moveTo(4);
         assertEquals(4, elevator.getCurrentFloor());
         assertEquals(4, motor.getLastDestination());
@@ -54,7 +57,6 @@ class ElevatorServiceTest {
 
     @Test
     void testMoveToFloorFromFixtureFile() throws Exception {
-        // Mystery Guest: the expected floor is loaded from an external fixture.
         var stream = getClass().getClassLoader().getResourceAsStream("floors.csv");
         assertNotNull(stream);
         String firstDataLine;
@@ -68,14 +70,12 @@ class ElevatorServiceTest {
 
     @Test
     void testMoveToHardCodedFloor() {
-        // Hard-coded test data: the meaning of 7 is not explained by the test.
         service.moveTo(7);
         assertEquals(7, elevator.getCurrentFloor());
     }
 
     @Test
     void testSensorReadingWithConditionalVerification() {
-        // Conditional Test Logic: the assertion path depends on a condition in the test.
         int observedFloor = service.getCurrentFloor();
         if (observedFloor == 1) {
             assertEquals(1, observedFloor);
@@ -86,7 +86,6 @@ class ElevatorServiceTest {
 
     @Test
     void testSeveralDestinationsInOneMethod() {
-        // Multiple Test Conditions: several input/result pairs are grouped in one test.
         assertEquals(2, moveAndRead(2));
         assertEquals(6, moveAndRead(6));
         assertEquals(9, moveAndRead(9));

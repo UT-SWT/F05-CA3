@@ -1,2 +1,5 @@
 package edu.course.elevator.hardware;
-public interface FloorSensor { int readCurrentFloor(); }
+
+public interface FloorSensor {
+    int readCurrentFloor();
+}

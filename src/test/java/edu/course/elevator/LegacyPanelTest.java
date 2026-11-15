@@ -1,8 +1,12 @@
 package edu.course.elevator;
 
-import edu.course.elevator.hardware.*;
+import edu.course.elevator.hardware.LegacyLiftMotor;
+import edu.course.elevator.hardware.LegacyMotorAdapter;
+import edu.course.elevator.hardware.Motor;
+import edu.course.elevator.hardware.RecordingMotor;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class LegacyPanelTest {
     @Test

@@ -2,7 +2,8 @@ package edu.course.elevator;
 
 import edu.course.elevator.config.ElevatorFactory;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class FactoryTest {
     @Test

@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
-// Configuration by Contract: runtime configuration chooses the hardware implementation.
 public class ElevatorConfiguration {
     public Properties load() throws IOException {
         Properties properties = new Properties();

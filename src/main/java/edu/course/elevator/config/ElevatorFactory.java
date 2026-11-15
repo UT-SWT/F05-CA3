@@ -4,10 +4,11 @@ import edu.course.elevator.events.ElevatorEventPublisher;
 import edu.course.elevator.hardware.*;
 import edu.course.elevator.model.Elevator;
 import edu.course.elevator.service.ElevatorService;
+
 import java.io.IOException;
 import java.util.Properties;
 
-// Small IoC composition root: this class decides which concrete dependencies are supplied.
+
 public class ElevatorFactory {
     public ElevatorService createService() throws IOException {
         Properties config = new ElevatorConfiguration().load();

@@ -7,7 +7,6 @@ import edu.course.elevator.hardware.Motor;
 import edu.course.elevator.model.Elevator;
 import edu.course.elevator.model.ElevatorState;
 
-// Dependencies are injected: the service can be tested with simple fakes or mocks.
 public class ElevatorService {
     private final Elevator elevator;
     private final Motor motor;
@@ -35,16 +34,24 @@ public class ElevatorService {
         events.publish("ARRIVED:" + destination);
         elevator.setState(ElevatorState.IDLE);
     }
+
     public void openDoor() {
         door.open();
         elevator.setState(ElevatorState.DOOR_OPEN);
         events.publish("DOOR_OPENED");
     }
+
     public void closeDoor() {
         door.close();
         elevator.setState(ElevatorState.IDLE);
         events.publish("DOOR_CLOSED");
     }
-    public int getCurrentFloor() { return sensor.readCurrentFloor(); }
-    public Elevator getElevator() { return elevator; }
+
+    public int getCurrentFloor() {
+        return sensor.readCurrentFloor();
+    }
+
+    public Elevator getElevator() {
+        return elevator;
+    }
 }
